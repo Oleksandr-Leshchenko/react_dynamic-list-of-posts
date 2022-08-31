@@ -12,7 +12,7 @@ export const NewCommentForm: React.FC = () => {
     (async function() {
       const id = await getUniqueCommentId();
 
-      console.log(id);
+      // console.log(id);
 
       setUniqueCommentId(id);
     })()
@@ -39,10 +39,10 @@ export const NewCommentForm: React.FC = () => {
     });
   };
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    sendComment(comment);
-    setComment(emptyComment);
+    sendComment(comment)
+      .then(() => setComment(emptyComment));
   };
 
   return (

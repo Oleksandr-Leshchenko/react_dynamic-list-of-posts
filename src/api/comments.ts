@@ -9,15 +9,15 @@ export const getPostComments = async (postId: number | undefined) =>
 export const sendComment = async (comment: Comment) => {
   return fetch(COMMENTS_URL, {
     method: 'POST',
-    body: JSON.stringify(comment),
     headers: {
       'Content-Type': 'application/json; charset=UTF-8',
     },
+    body: JSON.stringify(comment),
   });
 };
 
-export const deleteComment =  async (commentId: number) => {
-  fetch(`${COMMENTS_URL}/${commentId}`, { method: 'DELETE' });
+export const deleteComment = (commentId: number) => {
+  return fetch(`${COMMENTS_URL}/${commentId}`, { method: 'DELETE' });
 };
 
 export const getUniqueCommentId = async () => {

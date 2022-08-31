@@ -12,13 +12,17 @@ export const PostDetails: React.FC = () => {
   const { setComments } = useActions();
   const [showHide, setShowHide] = useState('show');
 
-  useEffect(() => {
-    (async function() {
-      const postComments = await getPostComments(selectedPost?.id);
+  console.log(comments, 'point 1');
 
-      setComments(postComments);
-    })()
-  }, [comments]);
+  const getSetComments = async () => {
+    const postComments = await getPostComments(selectedPost?.id);
+
+    setComments(postComments);
+  };
+
+  useEffect(() => {
+    getSetComments();
+  }, []);
 
   const handleClick = () => {
     if (showHide === 'show') {
@@ -26,6 +30,13 @@ export const PostDetails: React.FC = () => {
     } else {
       setShowHide('show');
     }
+  };
+
+  const handleDelete = (commentId: number) => {
+    deleteComment(commentId)
+      .then(() => getSetComments())
+    // getSetComments();
+    console.log(comments, 'point 2');
   };
 
   return (
@@ -55,7 +66,7 @@ export const PostDetails: React.FC = () => {
                 <button
                   type="button"
                   className="PostDetails__remove-button button"
-                  onClick={() => deleteComment(comment.id)}
+                  onClick={() => handleDelete(comment.id)}
                 >
                   X
                 </button>
