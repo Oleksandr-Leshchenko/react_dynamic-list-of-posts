@@ -1,4 +1,4 @@
-[LINK](https://oleksandr-leshchenko.github.io/react_dynamic-list-of-posts/)
+[LINK](https://oleksandr-leshchenko.github.io/react_dynamic-list-of-posts/) /link is outdated so better to clone repo
 
 ## Task
 You are given a basic markup and [the API](https://mate-academy.github.io/fe-students-api/).
